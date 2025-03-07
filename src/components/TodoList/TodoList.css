@@ -1,0 +1,29 @@
+.todo-list {
+  padding: 2em;
+}
+
+.todo-line {
+  padding: 1em;
+  border-bottom: 2px darkgray solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input.done-line {
+  display: none;
+}
+
+input.done-line + div {
+  width: 1em;
+  height: 1em;
+  border: 1px red solid;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 1em;
+}
+
+input.done-line:checked + div {
+  background-color: red;
+}
