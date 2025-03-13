@@ -4,7 +4,8 @@ import "./CreateTaskFrom.css";
 import { useTodoStore } from "../../stores/todoStore";
 
 export const CreateTaskForm = () => {
-  const addTask = useTodoStore((status) => status.addTask);
+  const addTask = useTodoStore(({ addTask }) => addTask);
+  const isLoading = useTodoStore(({ isLoading }) => isLoading);
   const inputRef = useRef<HTMLInputElement>(null);
   const [label, setLabel] = useState("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -21,8 +22,9 @@ export const CreateTaskForm = () => {
         value={label}
         onChange={(e) => setLabel(e.target.value)}
         ref={inputRef}
+        disabled={isLoading}
       />
-      <button type="submit" disabled={!label}>
+      <button type="submit" disabled={!label || isLoading}>
         Add
       </button>
     </form>
